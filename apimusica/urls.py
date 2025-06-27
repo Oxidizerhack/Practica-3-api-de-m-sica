@@ -17,14 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from musica import views as musica_views
-from rest_framework import DefaultRouter    
+from rest_framework.routers import DefaultRouter    
 
 router = DefaultRouter()
-router.register(r'ritmos', musica_views.views.RitmoViewSet)
-router.register(r'instrumentos', musica_views.InstrumentoViewSet)
-router.register(r'departamentos', musica_views.DepartamentoViewSet)
-router.register(r'agrupaciones', musica_views.AgrupacionViewSet)
-router.register(r'canciones', musica_views.CancionViewSet)
+router.register(r'Ritmo', musica_views.RitmoViewSet)
+router.register(r'Instrumento', musica_views.InstrumentoViewSet)
+router.register(r'Departamento', musica_views.DepartamentoViewSet)
+router.register(r'Agrupacion', musica_views.AgrupacionViewSet)
+router.register(r'Cancion', musica_views.CancionViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

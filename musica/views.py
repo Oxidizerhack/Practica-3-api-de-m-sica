@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from musica.models import  Instrumento, Ritmo, Departamento, Agrupacion, Cancion
-from musica.serializers import RitmoSerializer, InstrumentoSerializer, DepartamentoSerializer, AgrupacionSerializer, CancionSerializer
+from musica.serializers import InstrumentoSerializer, RitmoSerializer, DepartamentoSerializer, AgrupacionSerializer, CancionSerializer
 
 class InstrumentoViewSet(viewsets.ModelViewSet):
     queryset = Instrumento.objects.all()

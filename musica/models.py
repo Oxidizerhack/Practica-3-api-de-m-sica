@@ -2,8 +2,8 @@ from django.db import models
 
 # Create your models here.
 
-class Instrumentos(models.Model):
-    TIPOS_INSTRUMENTOS = [
+class Instrumento(models.Model):
+    TIPOS_INSTRUMENTO = [
     ("CUERDA_ANDINA", "Cuerda andina"),        # Charango, ronroco, guitarrilla
     ("VIENTO_ANDINO", "Viento andino"),        # Quena, zampoña, tarka, moseño
     ("PERCUSION_FOLKLORICA", "Percusión folklórica"),  # Bombo, caja, tambor, matraca
@@ -12,7 +12,7 @@ class Instrumentos(models.Model):
     ("AUTOCTONO", "Autóctono ceremonial"),     # Pututu, cuerno, instrumentos rituales
 ]
     nombre = models.CharField(max_length=100)
-    tipo = models.CharField(max_length=50, choices=TIPOS_INSTRUMENTOS)
+    tipo = models.CharField(max_length=50, choices=TIPOS_INSTRUMENTO)
 
     def __str__(self):
         return f"{self.nombre} ({self.tipo})"
@@ -43,7 +43,7 @@ class Ritmo(models.Model):
 ]
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField()
-    instrumentos = models.ManyToManyField(Instrumentos, related_name="ritmos")
+    instrumento = models.ManyToManyField(Instrumento, related_name="ritmos")
     def __str__(self):
         return self.nombre
 
@@ -227,7 +227,7 @@ class Cancion(models.Model):
   
     nombre = models.CharField(max_length=100)
     agrupacion = models.ForeignKey(Agrupacion, on_delete=models.CASCADE)
-    instrumentos = models.ManyToManyField(Instrumentos, blank=True)
+    instrumento = models.ManyToManyField(Instrumento, blank=True)
     ritmos = models.ManyToManyField(Ritmo, blank=True)
 
     def __str__(self):
